@@ -2,7 +2,9 @@
 
 # 1. Integrantes:
 David Castello Branco
+
 Leonardo Fernandes Lima Dias de Magalhães
+
 Marcus Vinicius Mascarenhas Honorato
 
 # 2. Funcionamento:
