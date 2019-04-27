@@ -9,7 +9,7 @@ string nomes_meses[12] = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Ju
 	**************************************************
 */
 
-void carrega_agenda(Agenda **calendario){
+void carrega_agenda(Agenda *calendario){
 	int hora, min, indice;
 	string descricao;
 	Mes *mes_atual;
@@ -19,7 +19,7 @@ void carrega_agenda(Agenda **calendario){
 		while ( getline (entrada,linha) ) {
 			if(linha.front() == '-'){ //Char que identifica o mês
 				linha.erase (linha.begin());
-				busca_mes(&(*calendario)->lista_mes->prox, &mes_atual, linha); //Pega o mes em questao na lista de meses
+				busca_mes(&calendario->lista_mes->prox, &mes_atual, linha); //Pega o mes em questao na lista de meses
 			
 			}
 			else {
@@ -152,13 +152,13 @@ void realiza_operacoes_agenda(Mes **m, int indice){ //Função que irá coordena
   	}while(true);
 }
 
-void inicia_agenda(Agenda **calendario){ //Função que inicializa a lista de meses
+void inicia_agenda(Agenda *calendario){ //Função que inicializa a lista de meses
 	
-	(*calendario)->lista_mes = (Mes*)calloc(1, sizeof(Mes));
-	(*calendario)->lista_mes->prox = NULL;
+	calendario->lista_mes = (Mes*)calloc(1, sizeof(Mes));
+	calendario->lista_mes->prox = NULL;
 
 	for (int i = 0; i < 12; ++i) {
-		insere_lista_mes(&(*calendario)->lista_mes->prox, i);
+		insere_lista_mes(&calendario->lista_mes->prox, i);
 	}
 }
 
@@ -220,13 +220,11 @@ void fecha_agenda(Agenda *calendario){
 	}
 	free(calendario->lista_mes->lista_dias);
 	free(calendario->lista_mes);
-	free(calendario);
 }
 
 void insere_lista_mes(Mes **m, int indice){
 	if (*m == NULL) { //caso a posição seja null, irá inicializar o mes
         (*m) = inicia_mes(nomes_meses[indice], qtd_dias_meses[indice]);
-        
         return;
     }
     else { //se não for NULL, irá chamar recursivamente a função para avaliar o ponteiro prox

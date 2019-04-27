@@ -37,8 +37,8 @@ Compromisso* inicia_compromisso(int, int, string); // Inicia o elemento compromi
 int menu_abrir_agenda(); // Função que retorna o mes escolhido pelo usuário
 int abrir_dia_mes(int num_mes); // Função que retorna o dia escolhido pelo usuário
 
-void inicia_agenda(Agenda**); // Função que inicia a estrutura da agenda
-void carrega_agenda(Agenda**); // Função que irá ler o arquivo e salvar as informaçõoes nele
+void inicia_agenda(Agenda*); // Função que inicia a estrutura da agenda
+void carrega_agenda(Agenda*); // Função que irá ler o arquivo e salvar as informaçõoes nele
 void realiza_operacoes_agenda(Mes**, int); // Função que irá pegar a opção digitada pelo usuário e chamar as funções para realiza-la
 void salva_agenda_arquivo(Agenda *calendario); // Função que irá imprimir toda a agenda no arquivo de saída
 
